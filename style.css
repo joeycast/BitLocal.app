@@ -1,0 +1,65 @@
+body {
+    background-color: #FDECD7;
+	font-family: 'Ubuntu', sans-serif;
+    padding: 0 20px; /* Add padding around everything */
+}
+
+header {
+    padding: 20px 0;
+    text-align: right;
+}
+
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #333;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.product-hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+    flex-direction: column;
+}
+
+.centered {
+    text-align: center;
+}
+
+.logo {
+    max-width: 50%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.app-store-button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+    .logo {
+        max-width: 70%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .logo {
+        max-width: 95%; /* Increase logo size for smaller screens */
+    }
+
+    p {
+        font-size: 1.0rem; /* Decrease subtext size for smaller screens */
+    }
+}
