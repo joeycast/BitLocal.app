@@ -1,11 +1,12 @@
 body {
-    background-color: #FDECD7;
-	font-family: 'Ubuntu', sans-serif;
-    padding: 0 20px; /* Add padding around everything */
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    color: #333;
 }
 
-header {
-    padding: 20px 0;
+.site-header {
+    padding: 20px;
     text-align: right;
 }
 
@@ -13,53 +14,51 @@ nav a {
     margin-left: 20px;
     text-decoration: none;
     color: #333;
+    font-weight: 600;
 }
 
 nav a:hover {
     text-decoration: underline;
 }
 
-.product-hero {
+.hero {
+    min-height: calc(100vh - 80px);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 50px 0;
-    flex-direction: column;
-}
-
-.centered {
     text-align: center;
+    padding: 20px;
 }
 
-.logo {
-    max-width: 50%;
+.hero-logo {
+    width: 180px;
+    max-width: 60%;
     height: auto;
-    margin-bottom: 10px;
-}
-
-p {
-    font-size: 1.5rem;
     margin-bottom: 20px;
 }
 
-.app-store-button {
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
+h1 {
+    margin: 0 0 10px;
+    font-size: 2.2rem;
+    font-weight: 600;
 }
 
-@media screen and (max-width: 768px) {
-    .logo {
-        max-width: 70%;
-    }
+.powered-by {
+    color: #333;
+    margin-bottom: 30px;
 }
 
-@media screen and (max-width: 480px) {
-    .logo {
-        max-width: 95%; /* Increase logo size for smaller screens */
+.download-btn img {
+    width: 180px;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.6rem;
     }
 
-    p {
-        font-size: 1.0rem; /* Decrease subtext size for smaller screens */
+    .download-btn img {
+        width: 150px;
     }
 }
