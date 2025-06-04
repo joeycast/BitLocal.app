@@ -1,33 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-	<style>
-	  @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital@1&display=swap');
-	</style>
-	<link rel="icon" href="images/favicon.png" type="image/png">
-    <title>BitLocal</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BitLocal</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="https://github.com/joeycast/BitLocal.app/blob/main/Privacy_Policy.md">Privacy Policy</a>
-			<a href="http://twitter.com/bitlocal_app">Twitter</a>
-            <a href="https://github.com/joeycast/BitLocal">GitHub</a>
-        </nav>
-    </header>
-    <section class="product-hero">
-        <div class="centered">
-            <img src="bitlocal.png" alt="BitLocal Logo" class="logo">
-            <p>Discover local bitcoin-friendly businesses.</p>
-			<a href="https://btcmap.org/">Powered by BTC Map</a>
-			<p></p>
-            <a href="https://apps.apple.com/us/app/bitlocal-btc-friendly-shops/id6447485666" target="_blank" class="app-store-button">
-                <img src="app_store_badge.svg" alt="Download on the App Store">
-            </a>
-        </div>
-    </section>
+  <header>
+    <nav>
+      <a href="https://github.com/joeycast/BitLocal.app/blob/main/Privacy_Policy.md">Privacy</a>
+      <a href="http://x.com/bitlocal_app">X</a>
+      <a href="https://github.com/joeycast/BitLocal">GitHub</a>
+      <button id="toggle-dark" class="theme-toggle" aria-label="Toggle dark mode">
+        <svg id="theme-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <!-- Sun core -->
+          <circle class="sun" cx="12" cy="12" r="4" fill="currentColor"/>
+          <!-- Sun rays -->
+          <g class="sun-rays">
+            <line x1="12" y1="3" x2="12" y2="6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <line x1="12" y1="18" x2="12" y2="21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <line x1="3" y1="12" x2="6" y2="12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <line x1="18" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <line x1="5.1" y1="5.1" x2="7" y2="7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <line x1="17" y1="17" x2="18.9" y2="18.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <line x1="5.1" y1="18.9" x2="7" y2="17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <line x1="17" y1="7" x2="18.9" y2="5.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </g>
+          <!-- Moon path -->
+          <path class="moon" d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z" fill="currentColor" opacity="0"/>
+        </svg>
+      </button>
+    </nav>
+  </header>
+
+  <main class="hero">
+    <img src="bitlocal_v2.png" alt="BitLocal Logo" class="logo" />
+    <h1>Shop Local, Pay in Bitcoin</h1>
+    <p>Discover local bitcoin-friendly businesses near you.</p>
+    <a href="https://btcmap.org/" class="powered">Powered by BTC Map</a>
+    <a href="https://apps.apple.com/us/app/bitlocal-btc-friendly-shops/id6447485666" target="_blank" class="app-store-button">
+      <img src="app_store_badge.svg" alt="Download on the App Store" />
+    </a>
+  </main>
+  <script>
+    const toggle = document.getElementById('toggle-dark');
+    const root = document.documentElement;
+    const sun = document.querySelector('.sun');
+    const moon = document.querySelector('.moon');
+
+    // System preference first
+    if (!localStorage.getItem('theme')) {
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        root.classList.add('dark-mode');
+        sun.style.opacity = "0";
+        moon.style.opacity = "1";
+      }
+    }
+    // Restore previous mode
+    if (localStorage.getItem('theme') === 'dark') {
+      root.classList.add('dark-mode');
+      sun.style.opacity = "0";
+      moon.style.opacity = "1";
+    } else {
+      sun.style.opacity = "1";
+      moon.style.opacity = "0";
+    }
+
+    toggle.addEventListener('click', () => {
+      root.classList.toggle('dark-mode');
+      const isDark = root.classList.contains('dark-mode');
+      sun.style.opacity = isDark ? "0" : "1";
+      moon.style.opacity = isDark ? "1" : "0";
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  </script>
 </body>
 </html>
