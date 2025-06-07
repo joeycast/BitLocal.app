@@ -160,3 +160,17 @@ p {
 .dark-mode .theme-toggle {
   color: #eee;
 }
+
+.tip-link {
+  margin-top: 2rem;
+  display: inline-block;
+  font-size: 1.15rem;
+  color: #ff7000;
+  text-decoration: underline;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.tip-link:hover {
+  color: #d85d00;
+  text-decoration: none;
+}
